@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-12" id="divDetail">
+            </div>
+        </div>
+    </div>
+
+
+@section scripts{
+    
+    <script type="text/javascript">
+        var _controllerPath = '@Url.Content("~/Home")';
+        var _list = _controllerPath + "/APOList";
+        var _dataTableList = _controllerPath + "/LoadData";
+
+
+       
+
+        $(document).ready(function (e) {
+
+             displayData();
+       
+        });
+
+        function displayData() {
+
+	        $.ajax({
+		        type: "POST",
+		        url: _list,
+		        success: function (newHtml) {
+			        setTimeout(function () {
+                        $("#divDetail").html(newHtml);
+                        $('#APOTable').DataTable();
+                    }, 500);
+		        },
+		        error: function (request, textStatus, errorThrown) {
+			        alert("AJAX error: " + request.statusText);
+		        }
+            });
+
+        }
+    </script>
+
+
+}

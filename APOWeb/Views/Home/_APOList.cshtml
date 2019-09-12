@@ -1,0 +1,28 @@
+﻿
+@using APOWeb.Data.Entities;
+
+@model IList<APO>
+    
+    <br/>
+    <div class="table-responsive">
+        <table id="APOTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" data-paging="true">
+            <thead>
+                <tr>
+                    <th>IATA Code &nbsp;</th>
+                    <th>NAME &nbsp;</th>
+                    <th>ICAO Code &nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (APO lst in Model)
+                {
+                    <tr>
+                        <td>@lst.iata_code</td>
+                        <td>@lst.name</td>
+                        <td>@lst.icao_code</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+        
